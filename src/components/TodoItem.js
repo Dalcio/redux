@@ -1,12 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import {
-  deleteTodo,
-  deleteTodoAsync,
-  toggleComplete,
-  toggleCompleteAsync,
-} from "../redux/todoSlice";
+import { deleteTodoAsync, toggleCompleteAsync } from "../redux/extraReducers";
 
 const TodoItem = ({ id, title, completed }) => {
   const dispatch = useDispatch();
@@ -27,7 +22,6 @@ const TodoItem = ({ id, title, completed }) => {
             type="checkbox"
             className="mr-3"
             checked={completed}
-            // onClick={handleCheckboxClick}
             onChange={handleCheckboxClick}
           ></input>
           {title}

@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { getTodosAsync } from "../redux/todoSlice";
+import { getTodosAsync } from "../redux/extraReducers";
 
 import TodoItem from "./TodoItem";
 
