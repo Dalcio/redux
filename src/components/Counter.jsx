@@ -7,7 +7,7 @@ import {
   reset,
   incrementWithValue,
   decrementWithValue,
-} from "../redux/actions";
+} from "../redux/countActions";
 
 const Counter = ({
   count,
@@ -66,7 +66,7 @@ const Counter = ({
 
 function mapStateToProps(state) {
   return {
-    count: state.count,
+    count: state.count.count,
   };
 }
 
