@@ -9,35 +9,22 @@ import {
   decrementWithValue,
 } from "../redux/actions";
 
-const Counter = ({ count, dispatch }) => {
-  const handleIncrement = () => {
-    dispatch(increment());
-  };
-
-  const handleDecrement = () => {
-    dispatch(decrement());
-  };
-
-  const handleReset = () => {
-    dispatch(reset());
-  };
-
-  const handleIncrementWithValue = (value) => {
-    dispatch(incrementWithValue(value));
-  };
-
-  const handleDecrementWithValue = (value) => {
-    dispatch(decrementWithValue(value));
-  };
-
+const Counter = ({
+  count,
+  increment,
+  decrement,
+  incrementWithValue,
+  decrementWithValue,
+  reset,
+}) => {
   return (
     <div className="d-flex flex-column">
-      <h2>Counter</h2>
+      <h2 className="text-center">Counter</h2>
       <div className="d-flex  justify-content-between align-items-center">
         <button
           type="button"
           className="btn btn-outline-primary mr-3"
-          onClick={handleDecrement}
+          onClick={decrement}
         >
           -
         </button>
@@ -45,7 +32,7 @@ const Counter = ({ count, dispatch }) => {
         <button
           type="button"
           className="btn btn-outline-primary ml-3"
-          onClick={handleIncrement}
+          onClick={increment}
         >
           +
         </button>
@@ -54,14 +41,14 @@ const Counter = ({ count, dispatch }) => {
         <button
           type="button"
           className="btn btn-outline-success flex-fill mr-1"
-          onClick={() => handleDecrementWithValue(10)}
+          onClick={() => decrementWithValue(10)}
         >
           - 10
         </button>
         <button
           type="button"
           className="btn btn-outline-success flex-fill ml-1"
-          onClick={() => handleIncrementWithValue(10)}
+          onClick={() => incrementWithValue(10)}
         >
           + 10
         </button>
@@ -69,7 +56,7 @@ const Counter = ({ count, dispatch }) => {
       <button
         type="button"
         className="btn btn-large btn-outline-danger text-uppercase"
-        onClick={handleReset}
+        onClick={reset}
       >
         Reset
       </button>
@@ -83,4 +70,12 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(Counter);
+const mapDispatchToProps = {
+  increment,
+  decrement,
+  reset,
+  incrementWithValue,
+  decrementWithValue,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
