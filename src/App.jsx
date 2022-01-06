@@ -5,7 +5,7 @@ import Counter from "./components/Counter";
 
 const App = () => {
   return (
-    <div className="container bg-white p-4">
+    <div className="container rounded-lg bg-white p-4">
       <Counter />
     </div>
   );

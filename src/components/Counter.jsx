@@ -1,19 +1,33 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { RESET, DECREMENT, INCREMENT } from "../redux/actions";
+import {
+  increment,
+  decrement,
+  reset,
+  incrementWithValue,
+  decrementWithValue,
+} from "../redux/actions";
 
 const Counter = ({ count, dispatch }) => {
-  const increment = () => {
-    dispatch({ type: INCREMENT });
+  const handleIncrement = () => {
+    dispatch(increment());
   };
 
-  const decrement = () => {
-    dispatch({ type: DECREMENT });
+  const handleDecrement = () => {
+    dispatch(decrement());
   };
 
-  const reset = () => {
-    dispatch({ type: RESET });
+  const handleReset = () => {
+    dispatch(reset());
+  };
+
+  const handleIncrementWithValue = (value) => {
+    dispatch(incrementWithValue(value));
+  };
+
+  const handleDecrementWithValue = (value) => {
+    dispatch(decrementWithValue(value));
   };
 
   return (
@@ -22,24 +36,40 @@ const Counter = ({ count, dispatch }) => {
       <div className="d-flex  justify-content-between align-items-center">
         <button
           type="button"
-          className="btn btn-outline-primary"
-          onClick={decrement}
+          className="btn btn-outline-primary mr-3"
+          onClick={handleDecrement}
         >
           -
         </button>
         <span className="h1">{count}</span>
         <button
           type="button"
-          className="btn btn-outline-primary"
-          onClick={increment}
+          className="btn btn-outline-primary ml-3"
+          onClick={handleIncrement}
         >
           +
+        </button>
+      </div>
+      <div className="d-flex  justify-content-between align-items-center mb-2">
+        <button
+          type="button"
+          className="btn btn-outline-success flex-fill mr-1"
+          onClick={() => handleDecrementWithValue(10)}
+        >
+          - 10
+        </button>
+        <button
+          type="button"
+          className="btn btn-outline-success flex-fill ml-1"
+          onClick={() => handleIncrementWithValue(10)}
+        >
+          + 10
         </button>
       </div>
       <button
         type="button"
         className="btn btn-large btn-outline-danger text-uppercase"
-        onClick={reset}
+        onClick={handleReset}
       >
         Reset
       </button>

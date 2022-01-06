@@ -1,4 +1,11 @@
 import { createStore } from "redux";
+import {
+  DECREMENT,
+  DECREMENT_WITH_VALUE,
+  INCREMENT,
+  INCREMENT_WITH_VALUE,
+  RESET,
+} from "./actions";
 
 const initialState = {
   count: 0,
@@ -8,15 +15,24 @@ function reducer(state = initialState, action) {
   // console.log("reducer", state, action);
 
   switch (action.type) {
-    case "INCREMENT":
+    case INCREMENT:
       return {
         count: state.count + 1,
       };
-    case "DECREMENT":
+    case DECREMENT:
       return {
         count: state.count - 1,
       };
-    case "RESET":
+    case INCREMENT_WITH_VALUE:
+      return {
+        count: state.count + action.payload.value,
+      };
+
+    case DECREMENT_WITH_VALUE:
+      return {
+        count: state.count - action.payload.value,
+      };
+    case RESET:
       return {
         count: 0,
       };
